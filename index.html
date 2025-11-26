@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Display System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .description {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .ad-button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .ad-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ad-button:active {
+            transform: translateY(0);
+        }
+        
+        #ad1 {
+            background: linear-gradient(to right, #3498db, #2980b9);
+        }
+        
+        #ad2 {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+        }
+        
+        #ad3 {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+        }
+        
+        .banner-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px dashed #ddd;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        
+        .banner-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .banner-content {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .banner-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #d35400;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .ad-counter {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+            }
+            
+            .ad-button {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Ad Display</h1>
+        <p class="description">Click the buttons below to display different advertisements in the banner area.</p>
+        
+        <div class="button-container">
+            <button id="ad1" class="ad-button">Ad 1: Tech Gadgets</button>
+            <button id="ad2" class="ad-button">Ad 2: Travel Deals</button>
+            <button id="ad3" class="ad-button">Ad 3: Fitness Gear</button>
+        </div>
+        
+        <div class="banner-container">
+            <div id="default-banner">
+                <h2 class="banner-title">Ad Banner</h2>
+                <p class="banner-content">Click any button above to display an advertisement here.</p>
+            </div>
+            
+            <div id="banner-ad1" class="hidden">
+                <h2 class="banner-title">Latest Tech Gadgets</h2>
+                <p class="banner-content">Discover the newest smartphones, laptops, and smart home devices with exclusive discounts!</p>
+                <div style="width: 100%; height: 150px; background: linear-gradient(to right, #3498db, #2980b9); border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                    TECH SALE - UP TO 40% OFF
+                </div>
+                <button class="cta-button">Shop Now</button>
+            </div>
+            
+            <div id="banner-ad2" class="hidden">
+                <h2 class="banner-title">Exclusive Travel Deals</h2>
+                <p class="banner-content">Book your dream vacation today! Limited time offers for tropical destinations.</p>
+                <div style="width: 100%; height: 150px; background: linear-gradient(to right, #e74c3c, #c0392b); border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                    PARADISE AWAITS - BOOK NOW!
+                </div>
+                <button class="cta-button">Explore Destinations</button>
+            </div>
+            
+            <div id="banner-ad3" class="hidden">
+                <h2 class="banner-title">Fitness & Wellness</h2>
+                <p class="banner-content">Get fit with our premium equipment and supplements. Summer body starts now!</p>
+                <div style="width: 100%; height: 150px; background: linear-gradient(to right, #2ecc71, #27ae60); border-radius: 8px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                    FITNESS GEAR - 25% OFF
+                </div>
+                <button class="cta-button">Get Fit Now</button>
+            </div>
+        </div>
+        
+        <div class="ad-counter">
+            Ads displayed: <span id="counter">0</span>
+        </div>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const ad1Button = document.getElementById('ad1');
+        const ad2Button = document.getElementById('ad2');
+        const ad3Button = document.getElementById('ad3');
+        
+        const defaultBanner = document.getElementById('default-banner');
+        const bannerAd1 = document.getElementById('banner-ad1');
+        const bannerAd2 = document.getElementById('banner-ad2');
+        const bannerAd3 = document.getElementById('banner-ad3');
+        
+        const counterElement = document.getElementById('counter');
+        
+        let adCounter = 0;
+        
+        // Function to hide all banners
+        function hideAllBanners() {
+            defaultBanner.classList.add('hidden');
+            bannerAd1.classList.add('hidden');
+            bannerAd2.classList.add('hidden');
+            bannerAd3.classList.add('hidden');
+        }
+        
+        // Function to show a specific banner
+        function showBanner(banner) {
+            hideAllBanners();
+            banner.classList.remove('hidden');
+            adCounter++;
+            counterElement.textContent = adCounter;
+        }
+        
+        // Add event listeners to buttons
+        ad1Button.addEventListener('click', function() {
+            showBanner(bannerAd1);
+        });
+        
+        ad2Button.addEventListener('click', function() {
+            showBanner(bannerAd2);
+        });
+        
+        ad3Button.addEventListener('click', function() {
+            showBanner(bannerAd3);
+        });
+        
+        // Add event listeners to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Thank you for your interest! This is a demo advertisement.');
+            });
+        });
+    </script>
+</body>
+</html>
